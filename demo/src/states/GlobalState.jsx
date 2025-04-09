@@ -4,10 +4,10 @@ import React, { createContext, useContext, useState } from 'react';
 const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-  const [promptMsg, setPromptMsg] = useState(''); // state global
+  const [requestMsg, setRequestMsg] = useState(''); 
 
   return (
-    <GlobalContext.Provider value={{ promptMsg, setPromptMsg }}>
+    <GlobalContext.Provider value={{ requestMsg, setRequestMsg }}>
       {children}
     </GlobalContext.Provider>
   );

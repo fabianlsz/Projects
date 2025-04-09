@@ -3,7 +3,7 @@ import { useGlobal } from '../../states/GlobalState';
 
 const Form = () => {
     const [message, setMessage] = useState('');
-    const { promptMsg, setPromptMsg } = useGlobal();
+    const { requestMsg, setRequestMsg } = useGlobal();
     const textareaRef = useRef(null);
 
     // Auto-resize the textarea
@@ -17,9 +17,9 @@ const Form = () => {
     const handleSend = (e) => {
         e.preventDefault();
         if (message.trim() === '') return;
-        setPromptMsg(message);
-        onSend(message.trim());
+        setRequestMsg(message);
         setMessage('');
+        onSend(message.trim());
     };
 
     const handleKeyDown = (e) => {
@@ -31,10 +31,9 @@ const Form = () => {
 
     return (
         <div className='flex bg-red w-full'>
-            {/* <div>{promptMsg}</div> */}
             <form
                 onSubmit={handleSend}
-                className="flex w-full bottom-0 left-0 right-0 bg-gray-900 p-4 border-t border-gray-700"
+                className="flex w-full bottom-0 left-0 right-0 bg-transparent p-4 no-scrollbar overscroll-auto"
             >
                 <div className="max-w-2xl w-full mx-auto flex items-end gap-2">
                     <textarea
@@ -43,7 +42,7 @@ const Form = () => {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        placeholder="Message ChatGPT..."
+                        placeholder="Message Archi.ai"
                         className="w-full resize-none rounded-lg p-3 text-white bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-400"
                     />
                     <button
